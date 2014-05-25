@@ -49,8 +49,14 @@ class Unix(object):
         os.chdir(path)
 
     def touch(self, path, fname):
-        os.open(path, fname)
+        print path, fname
 
+        cwd = os.getcwd()
+        if not os.path.exists(path):
+            os.makedirs(path, 755)
+            self.cd(path)
+        open(fname, "w").close()
+        self.cd(cwd)
 
 def print_to_screen(stack):
     """
@@ -61,7 +67,7 @@ def print_to_screen(stack):
         return print_to_screen(stack[3:])
 
     elif len(stack) == 2:
-        print "{0[0]:<20} {0[1]^20}".format(stack)
+        print "{0[0]:<20} {0[1]:^40}".format(stack)
 
     elif len(stack) == 1:
         print stack[0]

@@ -26,6 +26,10 @@ def main():
             if len(inputs) == 2:
                 command, arg = inputs
                 terminal.dic_args_1[command](arg)
+        elif input[0] in terminal.dic_args_2:
+            if len(inputs) == 3:
+                command, arg1, arg2 = inputs
+                terminal.dic_args_2[command](arg1, arg2)
 
 if __name__ == "__main__":
     main()
