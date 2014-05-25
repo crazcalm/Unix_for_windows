@@ -26,7 +26,7 @@ class Terminal(object):
 
     def __init__(self):
         self.dic = {"ls": self.ls}
-        self.dic_args_1 = {"cd": self.cd, "touch": self.touch}
+        self.dic_args_1 = {"cd": self.cd, "touch": self.touch, "mkdir": self.mkdir}
         self.unix = Unix()
 
     def ls(self):
@@ -39,12 +39,14 @@ class Terminal(object):
         except:
             print "Not a valid path"
 
+    def mkdir(self, path):
+        path = path_converter(path)
+        self.unix.mkdir(path)
+
     def touch(self, path):
         path = path_converter(path)
         if not path.find(os.sep) == -1:
-            print "path: ", path
             path, name = os.path.split(path)
-            print path, name
             self.unix.touch(path, name)
         else:
             name = path

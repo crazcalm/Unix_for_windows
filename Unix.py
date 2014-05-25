@@ -49,14 +49,15 @@ class Unix(object):
         os.chdir(path)
 
     def touch(self, path, fname):
-        print path, fname
-
         cwd = os.getcwd()
         if not os.path.exists(path):
-            os.makedirs(path, 755)
+            self.mkdir(path)
             self.cd(path)
         open(fname, "w").close()
         self.cd(cwd)
+
+    def mkdir(self, path):
+        os.makedirs(path, 755)
 
 def print_to_screen(stack):
     """
