@@ -14,13 +14,12 @@ def main():
     This method creates the terminal
     """
     # initial user input
-    inputs = "Dummy variable"
+    inputs = ["Dummy variable"]
     terminal = Terminal()
 
-    while(inputs != "exit"):
+    while(inputs[0] != "exit"):
         cwd = os.getcwd()
         inputs = user_input()
-        print inputs
         raw_input()
 
         if inputs[0] in terminal.dic:
