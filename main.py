@@ -1,11 +1,9 @@
 from Terminal import Terminal
 
-raw_input("imports working?")
-
 import sys, os
 
 def user_input():
-    cwd = os.getcwd()
+    cwd = os.getcwd().replace(os.sep, "/")
     string = raw_input(cwd + ": ").strip()
     return string.split(" ")
 
@@ -20,7 +18,6 @@ def main():
     while(inputs[0] != "exit"):
         cwd = os.getcwd()
         inputs = user_input()
-        raw_input()
 
         if inputs[0] in terminal.dic:
             command = inputs[0]

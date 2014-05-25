@@ -36,7 +36,7 @@ class Unix(object):
     Porting a number of the unix commands to Windows
     """
     def __init__(self):
-        print "You now have access to the a few linux commands!"
+        pass
 
     def ls(self):
         dirs = os.listdir(os.getcwd())
