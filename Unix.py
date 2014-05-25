@@ -19,14 +19,17 @@ Wish me luck!
 
 Current functionality:
 ----------------------
-
+ls
+cd
 
 Wanted functionality:
 ---------------------
 
-ls
-cd
 mkdir
+touch
+
+del file
+del dir
 """
 
 import os
@@ -44,6 +47,9 @@ class Unix(object):
 
     def cd(self, path):
         os.chdir(path)
+
+    def touch(self, path, fname):
+        os.open(path, fname)
 
 
 def print_to_screen(stack):

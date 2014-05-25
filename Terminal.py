@@ -16,6 +16,12 @@ Plan:
 from Unix import Unix
 import os
 
+def path_converter(path):
+    if path.find("/") != -1:
+        return path.replace("/", os.sep)
+    else:
+        return path
+
 class Terminal(object):
 
     def __init__(self):
@@ -27,10 +33,10 @@ class Terminal(object):
         self.unix.ls()
 
     def cd(self, path):
-        if path.find("/") != -1:
-            path = path.replace("/",os.sep)
+        path = path_converter(path)
         try:
             self.unix.cd(path)
         except:
             print "Not a valid path"
+
 
