@@ -16,38 +16,32 @@ Plan:
 import sys, os
 from Unix import Unix
 
+unix = Unix()
+
+raw_input("imports work")
 
 def parse_input(string):
     return string.split(" ")
 
-
-class Terminal(object):
-
-    def __init__(self):
-        print "Termainal instance created"
-        self.dic = {"ls": self.ls}
-        self.unix = Unix()
-
-    def ls(self):
-        raw_input("ls ing")
-        self.unix.ls()
-
+def ls():
+    return unix.ls()
 
 def main():
     """
     This method creates the terminal
     """
+
+    dic = {"ls": ls}
+
     # initial user input
     user_input = "Dummy variable"
-    terminal = Terminal()
 
     while(user_input != "exit"):
         cwd = os.getcwd()
         user_input = raw_input(cwd + ": ").strip()
 
-        if user_input in terminal.dic:
-            raw_input("item detected")
-            terminal.dic[user_input]()
+        if user_input in dic:
+            dic["user_input"]()
 
 
 if __name__ == "__main__":

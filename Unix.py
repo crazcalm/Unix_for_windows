@@ -29,12 +29,34 @@ cd
 mkdir
 """
 
+import os
+
 class Unix(object):
     """
     Porting a number of the unix commands to Windows
     """
     def __init__(self):
         print "You now have access to the a few linux commands!"
+
+    def ls(self):
+        dirs = os.listdir(os.getcwd())
+        print_to_screen(dirs)
+
+
+def print_to_screen(stack):
+    """
+    Formats the output
+    """
+    if len(stack)>=3:
+        print "{0[0]:<25} {0[1]:<25} {0[2]:>15}".format(stack)
+        return print_to_screen(stack[3:])
+
+    elif len(stack) == 2:
+        print "{0[0]:<30} {0[1]^30}".format(stack)
+
+    else:
+        print stack[0]
+
 
 
 
