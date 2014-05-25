@@ -48,13 +48,13 @@ def print_to_screen(stack):
     Formats the output
     """
     if len(stack)>=3:
-        print "{0[0]:<25} {0[1]:<25} {0[2]:>15}".format(stack)
+        print "{0[0]:<15} {0[1]:^40} {0[2]:>5}".format(stack)
         return print_to_screen(stack[3:])
 
     elif len(stack) == 2:
-        print "{0[0]:<30} {0[1]^30}".format(stack)
+        print "{0[0]:<20} {0[1]^20}".format(stack)
 
-    else:
+    elif len(stack) == 1:
         print stack[0]
 
 
