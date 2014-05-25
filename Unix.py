@@ -32,7 +32,7 @@ del file
 del dir
 """
 
-import os
+import os, shutil
 
 class Unix(object):
     """
@@ -58,6 +58,19 @@ class Unix(object):
 
     def mkdir(self, path):
         os.makedirs(path, 755)
+
+    def rm(self, name):
+        try:
+            os.remove(name)
+        except:
+            "Failed to delete the file"
+
+    def rmdir(self, path):
+        try:
+            shutil.rmtree(path)
+        except:
+            print "Failed to delete directory"
+
 
 def print_to_screen(stack):
     """

@@ -26,7 +26,8 @@ class Terminal(object):
 
     def __init__(self):
         self.dic = {"ls": self.ls}
-        self.dic_args_1 = {"cd": self.cd, "touch": self.touch, "mkdir": self.mkdir}
+        self.dic_args_1 = {"cd": self.cd, "touch": self.touch, "mkdir": self.mkdir,\
+                    "rm": self.rm, "rmdir": self.rmdir}
         self.unix = Unix()
 
     def ls(self):
@@ -51,3 +52,10 @@ class Terminal(object):
         else:
             name = path
             self.unix.touch(".", name)
+
+    def rm(self, name):
+        self.unix.rm(name)
+
+    def rmdir(self, path):
+        path = path_converter(path)
+        self.unix.rmdir(path)
