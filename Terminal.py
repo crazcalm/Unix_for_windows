@@ -25,10 +25,13 @@ def path_converter(path):
 class Terminal(object):
 
     def __init__(self):
-        self.dic = {"ls": self.ls}
+        self.dic = {"ls": self.ls, "help": self.help}
         self.dic_args_1 = {"cd": self.cd, "touch": self.touch, "mkdir": self.mkdir,\
                     "rm": self.rm, "rmdir": self.rmdir}
         self.unix = Unix()
+
+    def help(self):
+        self.unix.help()
 
     def ls(self):
         self.unix.ls()

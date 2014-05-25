@@ -41,6 +41,10 @@ class Unix(object):
     def __init__(self):
         pass
 
+    def help(self):
+        commands = ["help", "ls", "cd", "touch", "mkdir", "rm", "rmdir"]
+        print_to_screen(commands)
+
     def ls(self):
         dirs = os.listdir(os.getcwd())
         print_to_screen(dirs)
