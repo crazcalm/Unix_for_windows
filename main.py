@@ -4,7 +4,9 @@ raw_input("imports working?")
 
 import sys, os
 
-def parse_input(string):
+def user_input():
+    cwd = os.getcwd()
+    string = raw_input(cwd + ": ").strip()
     return string.split(" ")
 
 def main():
@@ -12,19 +14,22 @@ def main():
     This method creates the terminal
     """
     # initial user input
-    user_input = "Dummy variable"
+    inputs = "Dummy variable"
     terminal = Terminal()
 
-    while(user_input != "exit"):
+    while(inputs != "exit"):
         cwd = os.getcwd()
-        user_input = raw_input(cwd + ": ").strip()
+        inputs = user_input()
+        print inputs
+        raw_input()
 
-        if user_input in terminal.dic:
-            raw_input("item detected")
-            try:
-                terminal.dic[user_input]()
-            except e:
-                print e
+        if inputs[0] in terminal.dic:
+            command = inputs[0]
+            terminal.dic[command]()
+        elif inputs[0] in terminal.dic_args_1:
+            if len(inputs) == 2:
+                command, arg = inputs
+                terminal.dic_args_1[command](arg)
 
 if __name__ == "__main__":
     main()

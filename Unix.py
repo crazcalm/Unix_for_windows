@@ -42,6 +42,9 @@ class Unix(object):
         dirs = os.listdir(os.getcwd())
         print_to_screen(dirs)
 
+    def cd(self, path):
+        os.chdir(path)
+
 
 def print_to_screen(stack):
     """

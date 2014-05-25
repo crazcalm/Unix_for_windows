@@ -14,16 +14,23 @@ Plan:
 """
 
 from Unix import Unix
-
+import os
 
 class Terminal(object):
 
     def __init__(self):
-        print "Termainal instance created"
         self.dic = {"ls": self.ls}
+        self.dic_args_1 = {"cd": self.cd}
         self.unix = Unix()
 
     def ls(self):
-        raw_input("ls ing")
         self.unix.ls()
+
+    def cd(self, path):
+        if path.find("/") != -1:
+            path = path.replace("/",os.sep)
+        try:
+            self.unix.cd(path)
+        except:
+            print "Not a valid path"
 
